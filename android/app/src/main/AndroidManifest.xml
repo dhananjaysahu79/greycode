@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.greycode">
+    package="com.wings.letschat">
    <application
         android:label="greycode"
         android:name="${applicationName}"

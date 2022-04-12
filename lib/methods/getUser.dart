@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 // Future<String> getCurrentUID() async{
 //     final FirebaseAuth _auth = FirebaseAuth.instance;
 //     final FirebaseUser user = await _auth.currentUser!();
@@ -40,7 +41,8 @@ Future<bool> setUserCreds(UserCredential creds) async{
 class UserData{
   String fullName;
   String photoUrl;
-  UserData(this.fullName,this.photoUrl);
+  String uid;
+  UserData(this.fullName,this.photoUrl, this.uid);
 }
 
 Future getUserCreds() async{
@@ -51,9 +53,10 @@ Future getUserCreds() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String fullName = (prefs.getString('displayName') ?? 'abc');
     String photoUrl = (prefs.getString('photoURL') ?? '');
+    String uid = (prefs.getString('userID') ?? '');
     print(fullName);
     if(fullName == 'abc') return [false];
-    userData = UserData(fullName,photoUrl);
+    userData = UserData(fullName,photoUrl, uid);
     _userData.add(userData);
     print(userData);
     return _userData;

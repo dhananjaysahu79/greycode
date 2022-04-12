@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "777646434440",
+    "firebase_url": "https://chatapp-629e0.firebaseio.com",
+    "project_id": "chatapp-629e0",
+    "storage_bucket": "chatapp-629e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777646434440:android:caa3e3893389942f5e973d",
+        "android_client_info": {
+          "package_name": "com.wings.letschat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777646434440-va8aa2hc760di44crg2gduv0h29cfcrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCePYShyaxSC5fIC3BjBEUbmoMk0vKRFcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777646434440-va8aa2hc760di44crg2gduv0h29cfcrc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

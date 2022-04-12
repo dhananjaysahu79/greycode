@@ -1,4 +1,4 @@
-import 'package:chatapp/methods/getUser.dart';
+import '../../methods/getUser.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../utils/utilities.dart';
@@ -27,7 +27,7 @@ class _ExploreFriendsPageState extends State<ExploreFriendsPage> {
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Text(
-              "Explore Friends", 
+              "Discover Friends", 
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
           ),
           SizedBox(height:20),
@@ -147,21 +147,11 @@ class _ExploreFriendsPageState extends State<ExploreFriendsPage> {
             itemCount: snapshot.data!.docs.length,
             padding: EdgeInsets.only(bottom: 20),
             itemBuilder: ((context, index) {
-              return ListTile(
-                leading: buildImageAvatar(
-                   imageUrl: snapshot.data!.docs[index]["imageUrl"],
-                ),
-                title: Text(
-                  snapshot.data!.docs[index]["Name"],
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w900),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.add, color: Colors.black,), 
-                  onPressed: () {  },  
-                ),
+              return buildListTile(
+                name: snapshot.data!.docs[index]["Name"],
+                imageUrl: snapshot.data!.docs[index]["imageUrl"],
+                senderID: widget.userCreds[0].uid,
+                receiverID: snapshot.data!.docs[index].id,
               );
             })
           );
@@ -170,5 +160,50 @@ class _ExploreFriendsPageState extends State<ExploreFriendsPage> {
      ),
    );
  }
+
+
+ ListTile buildListTile(
+   {
+     required String name,
+     required String imageUrl,
+     required String senderID,
+     required String receiverID
+   }
+ ){
+   return ListTile(
+    leading: buildImageAvatar(
+        imageUrl: imageUrl
+    ),
+    title: Text(
+      name,
+      style: TextStyle(
+        color: Colors.black87,
+        fontSize: 17,
+        fontWeight: FontWeight.w900),
+    ),
+    trailing: IconButton(
+      icon: Icon(Icons.add, color: Colors.black,), 
+      onPressed: () => sendRequest(senderID, receiverID),  
+    ),
+  );
+ }
+
+  void sendRequest(senderId, receiverID) async {
+    
+    // Put senderID in receiver's receivedRequests
+    await FirebaseFirestore.instance.collection("users").doc(receiverID).update(
+      {
+        "receivedRequests": FieldValue.arrayUnion([senderId])
+      }
+    );
+
+    // Put receiverID in sender's sentRequests
+    await FirebaseFirestore.instance.collection("users").doc(senderId).update(
+      {
+        "sentRequests": FieldValue.arrayUnion([receiverID])
+      }
+    );
+  }
+
 
 }

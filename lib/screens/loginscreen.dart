@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:chatapp/methods/getUser.dart';
-import 'package:chatapp/methods/handleSignIn.dart';
-import 'package:chatapp/screens/homepage.dart';
-import 'package:chatapp/utils/utilities.dart';
+import '../../methods/handleSignIn.dart';
+import '../../methods/getUser.dart';
+import 'homepage.dart';
+import '../utils/utilities.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({ Key? key }) : super(key: key);
@@ -144,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _confirmSIgnIn() async {
 
-    var isLogged = await signInWithGoogle();
+    var isLogged = await signInWithGoogle(context: context);
     List res = await getUserCreds();
 
     if (isLogged && res[0] != false){

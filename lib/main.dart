@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:chatapp/screens/loginscreen.dart';
-import 'package:chatapp/screens/splashscreen.dart';
+import 'screens/splashscreen.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
+
 
 Future <void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  final client = StreamChatClient('dshw3kcqhjkg');
+  runApp(MyApp(
+    client: client
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  
+  const MyApp({Key? key, required this.client}) : super(key: key);
+  final StreamChatClient client;
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +31,22 @@ class MyApp extends StatelessWidget {
         fontFamily: 'GoogleSans',
         canvasColor: Colors.white,
         primaryIconTheme: IconThemeData(color: Colors.black),
-
+    
         // page transition slide animation
         pageTransitionsTheme: PageTransitionsTheme(
         builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         }),
       ),
-
+      
+      builder: (context, child) {
+        return StreamChatCore(
+          client: client,
+          child: child!,
+        );
+      },
       // Splashscreen will decide which screen to show
       home: SplashScreen(),
-      // home: MyHomePage(title: "chatapp"),
      
     );
   }

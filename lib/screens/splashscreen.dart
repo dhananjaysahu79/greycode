@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:chatapp/methods/getUser.dart';
-import 'package:chatapp/screens/homepage.dart';
-import 'package:chatapp/screens/loginscreen.dart';
+import 'homepage.dart';
+import 'loginscreen.dart';
+import '../methods/getUser.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({ Key? key }) : super(key: key);
@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
               image: DecorationImage(
                 image: AssetImage("assets/Images/splash_background.png"),
                 fit: BoxFit.cover
-            ) )
+            ))
           ),
 
           Column(

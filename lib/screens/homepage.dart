@@ -1,8 +1,7 @@
-import 'package:chatapp/screens/messagepage/MessagePage.dart';
-import 'package:chatapp/screens/notificationpage/NotificationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'messagepage/MessagePage.dart';
+import 'notificationpage/NotificationPage.dart';
 
 import 'explorefriendspage/ExploreFriendsPage.dart';
 
@@ -21,17 +20,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(
+        value: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark
         ),
         child: Scaffold(
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-              child: buildPageView()
-            ),
-          ),
+          body: SafeArea(child: buildPageView()),
         bottomNavigationBar: buildBottomNavigationBar()
       )
     );
@@ -48,15 +42,15 @@ class _HomePageState extends State<HomePage> {
       },
       children: [
         ExploreFriendsPage(widget.userCreds),
-        MessagePage(),
-        NotificationPage(),
+        MessagePage(widget.userCreds),
+        NotificationPage(widget.userCreds),
       ],
     );
   }
 
   BottomNavigationBar buildBottomNavigationBar() {
     return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
+      // type: BottomNavigationBarType.fixed,
       currentIndex: _selectedIndex,
       onTap: (value) {
         setState(() {
@@ -64,14 +58,14 @@ class _HomePageState extends State<HomePage> {
           _controller.jumpToPage(value);
         });
       },
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.people_alt_outlined), 
           label: 'People'
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.message_outlined,),
-          label: 'Messages'),
+          label: 'Chats'),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite_border), 
           label: 'Notifications'

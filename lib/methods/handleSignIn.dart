@@ -1,9 +1,11 @@
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:chatapp/methods/createUser.dart';
-import 'package:chatapp/methods/getUser.dart';
+import 'getUser.dart';
+import 'createUser.dart';
 
-Future<bool> signInWithGoogle() async {
+
+Future<bool> signInWithGoogle({required BuildContext context}) async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
   print('triggered1');
@@ -18,7 +20,7 @@ Future<bool> signInWithGoogle() async {
   print('triggered3');
   // Once signed in, return the UserCredential
   UserCredential userCreds = await FirebaseAuth.instance.signInWithCredential(credential);
-  bool isProfileCreated = await createUser(userCreds);
+  bool isProfileCreated = await createUser(userCreds, context);
   if(isProfileCreated){
     bool isSet = await setUserCreds(userCreds);
     return isSet;

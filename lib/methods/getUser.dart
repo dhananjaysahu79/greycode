@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart' as googleSignIn;
 
 
 // Future<String> getCurrentUID() async{
@@ -93,6 +94,7 @@ Future<bool> logOutUser() async{
     prefs.remove('displayName');
     prefs.remove('userID');
     prefs.remove('photoURL');
+    await FirebaseAuth.instance.signOut();
     return true;
   }catch(e){
     return false;

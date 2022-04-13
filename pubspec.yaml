@@ -27,7 +27,16 @@ dev_dependencies:
   shared_preferences: ^2.0.13
   cloud_firestore: ^3.1.11
   stream_chat_flutter: ^3.5.1
+  google_nav_bar: ^5.0.6
+  line_icons: ^2.0.1
   # flutter_lints: ^2.0.0
+
+
+dependency_overrides:
+  video_compress:
+      git:
+        url: https://github.com/jonataslaw/VideoCompress.git
+        ref: master
 
 
 flutter:
@@ -41,4 +50,5 @@ flutter:
       fonts:
         - asset: assets/Fonts/GoogleSans-Regular.ttf
         - asset: assets/Fonts/GoogleSans-Bold.ttf
+
 

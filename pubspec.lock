@@ -373,6 +373,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  google_nav_bar:
+    dependency: "direct dev"
+    description:
+      name: google_nav_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.6"
   google_sign_in:
     dependency: "direct dev"
     description:
@@ -492,6 +499,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.4.0"
+  line_icons:
+    dependency: "direct dev"
+    description:
+      name: line_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   logging:
     dependency: transitive
     description:
@@ -1002,12 +1016,14 @@ packages:
     source: hosted
     version: "2.4.0"
   video_compress:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: video_compress
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.0"
+      path: "."
+      ref: master
+      resolved-ref: e51b3eb0f357f5e478e1fd4e51a87219155ed178
+      url: "https://github.com/jonataslaw/VideoCompress.git"
+    source: git
+    version: "3.1.1"
   video_player:
     dependency: transitive
     description:

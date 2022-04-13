@@ -84,18 +84,22 @@ class _MessagePageState extends State<MessagePage> {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () async{
-                  List res = await createChannel(widget.userCreds[0].uid, snapshot.data[index].uid);
+                  List res = await createChannel(context,widget.userCreds[0].uid, snapshot.data[index].uid);
                   if(res[0]){
+                    showSnackBar("Channel Created: $res[1]", context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ChatScreen(
                             channel: res[1],
+                            receiverName: snapshot.data[index].fullName,
+                            imageUrl: snapshot.data[index].photoUrl
+
                           ),
                         ),
                       );
                   }
-                  else showSnackBar(res[1], context);
+                  else showSnackBar("Error in createChannel: $res[1]", context);
                 },
                 child: buildImageAvatar(
                   imageUrl: snapshot.data[index].photoUrl,

@@ -1,6 +1,6 @@
 # greycode
 
-A new Flutter project.
+A Flutter Chat App project.
 
 ## Getting Started
 
@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+ScreenShots
+
+![](Screenshots/Screenshot_20220413-110206.png)
+![](Screenshots/Screenshot_20220413-115956.png)
+![](Screenshots/Screenshot_20220413-120036.png)
+![](Screenshots/Screenshot_20220413-121124.png)
+![](Screenshots/Screenshot_20220413-114219.png)
+

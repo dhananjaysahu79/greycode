@@ -17,10 +17,11 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ScreenShots
-
-![](Screenshots/Screenshot_20220413-110206.png)
-![](Screenshots/Screenshot_20220413-115956.png)
-![](Screenshots/Screenshot_20220413-120036.png)
-![](Screenshots/Screenshot_20220413-121124.png)
-![](Screenshots/Screenshot_20220413-114219.png)
+<div>
+<img src="Screenshots/Screenshot_20220413-110206.png" width="150">
+<img src="Screenshots/Screenshot_20220413-115956.png" width="150">
+<img src="Screenshots/Screenshot_20220413-120036.png" width="150">
+<img src="Screenshots/Screenshot_20220413-121124.png" width="150">
+<img src="Screenshots/Screenshot_20220413-114219.png" width="150">
+</div>
 
